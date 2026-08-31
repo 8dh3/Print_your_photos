@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استوديو الطباعة الاحترافية | Photo Print Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            accent: '#8b5cf6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar for mobile overflow */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="pb-24 max-w-md mx-auto min-h-screen bg-slate-50 shadow-2xl border-x border-slate-200 relative">
+
+    <!-- Header / Hero Section -->
+    <header class="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-b-3xl shadow-lg overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/20 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
+        
+        <div class="relative z-10 text-center">
+            <div class="w-20 h-20 mx-auto mb-3 rounded-2xl bg-white/10 backdrop-blur-md p-1 border border-white/20 flex items-center justify-center shadow-inner">
+                <i class="fa-solid fa-camera-retro text-4xl text-brand-500"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold tracking-wide">برينت ستوديو <span class="text-xs bg-brand-500/30 text-brand-100 px-2 py-0.5 rounded-full border border-brand-500/40">VIP</span></h1>
+            <p class="text-slate-300 text-xs mt-1">طباعة صور احترافية بجودة عالية وألوان حقيقية يدوم بريقها</p>
+            
+            <div class="mt-4 flex items-center justify-center gap-3 text-xs text-slate-300">
+                <span class="flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
+                    <i class="fa-solid fa-droplet text-cyan-400"></i> حبر 6 ألوان Epson
+                </span>
+                <span class="flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
+                    <i class="fa-solid fa-truck-fast text-emerald-400"></i> توصيل سريع
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sticky top-2 z-30 px-4 mt-3">
+        <div class="glass-card rounded-2xl p-1.5 shadow-md flex justify-between gap-1 text-xs font-bold text-slate-600">
+            <button onclick="switchTab('prices')" id="tab-prices" class="flex-1 py-2 px-1 rounded-xl transition-all duration-300 bg-brand-600 text-white shadow-sm flex items-center justify-center gap-1">
+                <i class="fa-solid fa-tags"></i> الأسعار
+            </button>
+            <button onclick="switchTab('calc')" id="tab-calc" class="flex-1 py-2 px-1 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-calculator"></i> الحاسبة
+            </button>
+            <button onclick="switchTab('gallery')" id="tab-gallery" class="flex-1 py-2 px-1 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-images"></i> المعرض
+            </button>
+            <button onclick="switchTab('offers')" id="tab-offers" class="flex-1 py-2 px-1 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-gift"></i> العروض
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="p-4 space-y-5">
+
+        <!-- TAB 1: PRICES & SIZES -->
+        <section id="section-prices" class="space-y-4">
+            
+            <!-- Paper Types Info -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 p-3.5 rounded-2xl flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-lg shadow-md">
+                        <i class="fa-solid fa-scroll"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">أنواع ورق الطباعة</h4>
+                        <p class="text-xs text-slate-500">ورق فوتوغرافي سميك Glossy / Matte (230g)</p>
+                    </div>
+                </div>
+                <span class="text-xs font-extrabold text-brand-700 bg-white px-2 py-1 rounded-lg border border-blue-200">أصلي 100%</span>
+            </div>
+
+            <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-brand-600"></i> قائمة أسعار القياسات المفردة
+            </h3>
+
+            <!-- Size Cards Grid -->
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Size A4 -->
+                <div class="glass-card p-3.5 rounded-2xl relative overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="absolute top-0 left-0 bg-brand-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-br-lg">أكثر طلباً</div>
+                    <div class="text-slate-400 font-bold text-xs">قياس كبير</div>
+                    <div class="text-lg font-black text-slate-800 my-0.5">A4 <span class="text-xs text-slate-400 font-normal">(21×30 سم)</span></div>
+                    <div class="text-brand-600 font-extrabold text-sm mb-2">450 د.ع <span class="text-[10px] text-slate-400 font-normal">/للصورة</span></div>
+                    <button onclick="quickSelect('a4')" class="w-full py-1.5 bg-slate-100 hover:bg-brand-50 text-brand-700 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-plus text-[10px]"></i> احسب التكلفة
+                    </button>
+                </div>
+
+                <!-- Size A5 -->
+                <div class="glass-card p-3.5 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="text-slate-400 font-bold text-xs">قياس متوسط</div>
+                    <div class="text-lg font-black text-slate-800 my-0.5">A5 <span class="text-xs text-slate-400 font-normal">(15×21 سم)</span></div>
+                    <div class="text-brand-600 font-extrabold text-sm mb-2">250 د.ع <span class="text-[10px] text-slate-400 font-normal">/للصورة</span></div>
+                    <button onclick="quickSelect('a5')" class="w-full py-1.5 bg-slate-100 hover:bg-brand-50 text-brand-700 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-plus text-[10px]"></i> احسب التكلفة
+                    </button>
+                </div>
+
+                <!-- Size 10x15 -->
+                <div class="glass-card p-3.5 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="text-slate-400 font-bold text-xs">حجم الألبوم القياسي</div>
+                    <div class="text-lg font-black text-slate-800 my-0.5">10 × 15 <span class="text-xs text-slate-400 font-normal">سم</span></div>
+                    <div class="text-brand-600 font-extrabold text-sm mb-2">150 د.ع <span class="text-[10px] text-slate-400 font-normal">/للصورة</span></div>
+                    <button onclick="quickSelect('10x15')" class="w-full py-1.5 bg-slate-100 hover:bg-brand-50 text-brand-700 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-plus text-[10px]"></i> احسب التكلفة
+                    </button>
+                </div>
+
+                <!-- Small Cards -->
+                <div class="glass-card p-3.5 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="text-slate-400 font-bold text-xs">كروت ومحفظة</div>
+                    <div class="text-lg font-black text-slate-800 my-0.5">7 × 10 <span class="text-xs text-slate-400 font-normal">سم</span></div>
+                    <div class="text-brand-600 font-extrabold text-sm mb-2">100 د.ع <span class="text-[10px] text-slate-400 font-normal">/للصورة</span></div>
+                    <button onclick="quickSelect('card')" class="w-full py-1.5 bg-slate-100 hover:bg-brand-50 text-brand-700 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-plus text-[10px]"></i> احسب التكلفة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Banner -->
+            <div class="bg-slate-900 text-white p-4 rounded-2xl space-y-2 shadow-md">
+                <div class="font-bold text-sm text-amber-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-star"></i> لماذا تختار طباعتنا؟
+                </div>
+                <ul class="text-xs text-slate-300 space-y-1.5">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> نظام طباعة دقيق بـ 6 ألوان لتفاصيل البشرة.</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> مقاومة للماء والبهتان وتدوم لسنوات طويلة.</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> تغليف يحمي الصور من الخدوش مجاناً.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TAB 2: INTERACTIVE CALCULATOR -->
+        <section id="section-calc" class="hidden space-y-4">
+            <div class="glass-card p-4 rounded-2xl shadow-md space-y-4 border-brand-100">
+                <div class="flex items-center justify-between border-b pb-3 border-slate-200">
+                    <h3 class="font-extrabold text-slate-800 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-calculator text-brand-600"></i> حاسبة التكلفة الفورية
+                    </h3>
+                    <span class="text-xs bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded-full">تحديث فوري</span>
+                </div>
+
+                <!-- Size Selection -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">1. اختر حجم الورقة:</label>
+                    <select id="calc-size" onchange="calculateTotal()" class="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        <option value="450" data-name="A4 (21x30)">A4 (21×30 سم) - 450 دينار</option>
+                        <option value="250" data-name="A5 (15x21)">A5 (15×21 سم) - 250 دينار</option>
+                        <option value="150" data-name="10x15 سم">ألبوم (10×15 سم) - 150 دينار</option>
+                        <option value="100" data-name="7x10 سم">كارت محفظة (7×10 سم) - 100 دينار</option>
+                    </select>
+                </div>
+
+                <!-- Paper Finish -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">2. نوعية ملمس الورق:</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                        <label class="flex items-center gap-2 p-2.5 bg-white border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="paper-type" value="لامع (Glossy)" checked onchange="calculateTotal()" class="text-brand-600 focus:ring-brand-500">
+                            <span>ورق لامع (Glossy)</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2.5 bg-white border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50">
+                            <input type="radio" name="paper-type" value="مطفي (Matte)" onchange="calculateTotal()" class="text-brand-600 focus:ring-brand-500">
+                            <span>ورق مطفي (Matte)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Quantity Counter -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">3. عدد الصور المطلوبة:</label>
+                    <div class="flex items-center gap-3">
+                        <button onclick="adjustQty(-10)" class="w-10 h-10 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold text-slate-700 text-base active:scale-95 transition flex items-center justify-center">-10</button>
+                        <button onclick="adjustQty(-1)" class="w-10 h-10 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold text-slate-700 text-base active:scale-95 transition flex items-center justify-center">-1</button>
+                        <input type="number" id="calc-qty" value="10" min="1" oninput="calculateTotal()" class="flex-1 text-center p-2.5 bg-white border border-slate-300 rounded-xl text-base font-black text-brand-700 focus:outline-none">
+                        <button onclick="adjustQty(1)" class="w-10 h-10 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold text-slate-700 text-base active:scale-95 transition flex items-center justify-center">+1</button>
+                        <button onclick="adjustQty(10)" class="w-10 h-10 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold text-slate-700 text-base active:scale-95 transition flex items-center justify-center">+10</button>
+                    </div>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="bg-gradient-to-br from-brand-50 to-indigo-50 p-4 rounded-xl border border-brand-200 space-y-2">
+                    <div class="flex justify-between text-xs text-slate-600">
+                        <span>سعر القطعة:</span>
+                        <span id="unit-price" class="font-bold">450 د.ع</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-600">
+                        <span>العدد الإجمالي:</span>
+                        <span id="summary-qty" class="font-bold">10 صور</span>
+                    </div>
+                    <div class="border-t border-brand-200 pt-2 flex justify-between items-center">
+                        <span class="font-extrabold text-slate-800 text-sm">المجموع الكلي:</span>
+                        <span id="total-price" class="text-xl font-black text-brand-700">4,500 د.ع</span>
+                    </div>
+                </div>
+
+                <!-- Direct Order Button -->
+                <button onclick="sendWhatsAppOrder()" class="w-full py-3.5 gradient-btn text-white font-extrabold rounded-xl shadow-lg hover:opacity-95 active:scale-[0.98] transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> إرسال الطلب عبر الواتساب مباشرة
+                </button>
+            </div>
+        </section>
+
+        <!-- TAB 3: GALLERY SHOWCASE -->
+        <section id="section-gallery" class="hidden space-y-4">
+            <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-photo-film text-brand-600"></i> نماذج من دقة وحيوية الألوان
+            </h3>
+            
+            <div class="grid grid-cols-2 gap-2.5">
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm aspect-square bg-slate-200">
+                    <img src="https://placehold.co/400x400/2563eb/ffffff?text=Portrait+Print" alt="نموذج طباعة 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white text-[10px] font-bold">صور شخصية دقيقة</div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm aspect-square bg-slate-200">
+                    <img src="https://placehold.co/400x400/7c3aed/ffffff?text=Landscape+Colors" alt="نموذج طباعة 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white text-[10px] font-bold">تدرجات طبيعية</div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm aspect-square bg-slate-200">
+                    <img src="https://placehold.co/400x400/059669/ffffff?text=Family+Albums" alt="نموذج طباعة 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white text-[10px] font-bold">ذكريات العائلة والألبومات</div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden shadow-sm aspect-square bg-slate-200">
+                    <img src="https://placehold.co/400x400/d97706/ffffff?text=Glossy+Finish" alt="نموذج طباعة 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white text-[10px] font-bold">لمعان عالي ومقاوم للماء</div>
+                </div>
+            </div>
+
+            <div class="glass-card p-3 rounded-xl text-center text-xs text-slate-500">
+                <i class="fa-solid fa-circle-info text-brand-500 mb-1"></i>
+                جميع الصور تطبع باستخدام أحبار Epson الأصلية لضمان عدم تغير الألوان عبر الزمن.
+            </div>
+        </section>
+
+        <!-- TAB 4: SPECIAL OFFERS -->
+        <section id="section-offers" class="hidden space-y-4">
+            <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-fire text-amber-500"></i> العروض والباقات التوفيرية
+            </h3>
+
+            <!-- Offer Card 1: 100 A4 Photos -->
+            <div class="glass-card rounded-2xl p-4 border-2 border-amber-400 relative overflow-hidden shadow-md">
+                <div class="absolute -left-8 top-3 bg-amber-500 text-white font-extrabold text-[10px] px-8 py-0.5 -rotate-45 shadow-sm">
+                    الأقوى 🏆
+                </div>
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-[10px] font-extrabold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">باقة الذكريات الكبرى</span>
+                        <h4 class="text-base font-black text-slate-800 mt-1">عرض 100 صورة A4</h4>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-xl font-black text-amber-600">45,000 <span class="text-xs">د.ع</span></div>
+                        <div class="text-[10px] text-slate-400 line-through">55,000 د.ع</div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-600 mb-3">اطبع 100 صورة قياس A4 كاملة على ورق فوتوغرافي فاخر مع تغليف وحماية مجانية.</p>
+                <button onclick="orderOffer('عرض 100 صورة A4 بسعر 45,000 دينار')" class="w-full py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-xs transition shadow flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp"></i> حجز هذا العرض الان
+                </button>
+            </div>
+
+            <!-- Offer Card 2: Album Package -->
+            <div class="glass-card rounded-2xl p-4 border border-brand-200 relative overflow-hidden shadow-sm">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-[10px] font-extrabold text-brand-600 bg-brand-50 px-2 py-0.5 rounded-md border border-brand-200">باقة الألبوم الصغير</span>
+                        <h4 class="text-base font-black text-slate-800 mt-1">50 صورة 10×15 سم</h4>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-lg font-black text-brand-600">7,000 <span class="text-xs">د.ع</span></div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-600 mb-3">مثالية لصور الموبايل والذكريات اليومية + كروت هدايا مجانية مع الطلب.</p>
+                <button onclick="orderOffer('عرض 50 صورة (10x15 سم) بسعر 7,000 دينار')" class="w-full py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition shadow flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp"></i> طلب العرض
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sticky Quick Contact Footer -->
+    <div class="fixed bottom-0 inset-x-0 max-w-md mx-auto p-3 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 flex items-center justify-between gap-2 shadow-lg">
+        <a href="https://wa.me/9640000000000" target="_blank" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-md transition">
+            <i class="fa-brands fa-whatsapp text-base"></i> واتساب مباشر
+        </a>
+        <a href="https://instagram.com" target="_blank" class="w-10 h-10 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white rounded-xl flex items-center justify-center text-lg shadow-md hover:opacity-90 transition">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="tel:07000000000" class="w-10 h-10 bg-slate-800 text-white rounded-xl flex items-center justify-center text-lg shadow-md hover:bg-slate-900 transition">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switcher Logic
+        function switchTab(tabName) {
+            const tabs = ['prices', 'calc', 'gallery', 'offers'];
+            tabs.forEach(t => {
+                const section = document.getElementById(`section-${t}`);
+                const tabBtn = document.getElementById(`tab-${t}`);
+                if (t === tabName) {
+                    section.classList.remove('hidden');
+                    tabBtn.className = "flex-1 py-2 px-1 rounded-xl transition-all duration-300 bg-brand-600 text-white shadow-sm flex items-center justify-center gap-1 font-bold";
+                } else {
+                    section.classList.add('hidden');
+                    tabBtn.className = "flex-1 py-2 px-1 rounded-xl transition-all duration-300 hover:bg-slate-100 flex items-center justify-center gap-1 text-slate-600 font-bold";
+                }
+            });
+        }
+
+        // Quick Select from Prices Tab
+        function quickSelect(sizeKey) {
+            switchTab('calc');
+            const selectEl = document.getElementById('calc-size');
+            if (sizeKey === 'a4') selectEl.value = '450';
+            else if (sizeKey === 'a5') selectEl.value = '250';
+            else if (sizeKey === '10x15') selectEl.value = '150';
+            else if (sizeKey === 'card') selectEl.value = '100';
+            
+            calculateTotal();
+        }
+
+        // Quantity Stepper
+        function adjustQty(amount) {
+            const qtyInput = document.getElementById('calc-qty');
+            let currentVal = parseInt(qtyInput.value) || 1;
+            currentVal = Math.max(1, currentVal + amount);
+            qtyInput.value = currentVal;
+            calculateTotal();
+        }
+
+        // Calculator Core Logic
+        function calculateTotal() {
+            const sizeSelect = document.getElementById('calc-size');
+            const unitPrice = parseInt(sizeSelect.value);
+            const qtyInput = document.getElementById('calc-qty');
+            let qty = parseInt(qtyInput.value);
+            
+            if (isNaN(qty) || qty < 1) {
+                qty = 1;
+            }
+
+            const total = unitPrice * qty;
+
+            document.getElementById('unit-price').innerText = unitPrice.toLocaleString() + ' د.ع';
+            document.getElementById('summary-qty').innerText = qty + ' صورة';
+            document.getElementById('total-price').innerText = total.toLocaleString() + ' د.ع';
+        }
+
+        // Send Custom WhatsApp Order
+        function sendWhatsAppOrder() {
+            const sizeSelect = document.getElementById('calc-size');
+            const sizeName = sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-name');
+            const paperType = document.querySelector('input[name="paper-type"]:checked').value;
+            const qty = document.getElementById('calc-qty').value;
+            const total = document.getElementById('total-price').innerText;
+
+            const text = `مرحباً، أود طلب طباعة صور بالتفاصيل التالية:%0A` +
+                         `📷 الحجم: ${sizeName}%0A` +
+                         `✨ ملمس الورق: ${paperType}%0A` +
+                         `🔢 العدد: ${qty} صورة%0A` +
+                         `💰 التكلفة التقديرية: ${total}`;
+
+            // استبدل الرقم برقم الواتساب الخاص بك
+            const whatsappNum = "9640000000000";
+            window.open(`https://wa.me/${whatsappNum}?text=${text}`, '_blank');
+        }
+
+        // Send Offer WhatsApp Order
+        function orderOffer(offerTitle) {
+            const text = `مرحباً، أود الاستفسار وطلب العرض التالي:%0A🎁 ${offerTitle}`;
+            const whatsappNum = "9640000000000";
+            window.open(`https://wa.me/${whatsappNum}?text=${text}`, '_blank');
+        }
+
+        // Initialize Calculator on Load
+        window.onload = function() {
+            calculateTotal();
+        }
+    </script>
+</body>
+</html>
