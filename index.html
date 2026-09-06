@@ -86,7 +86,7 @@
         <span class="arrow arrow-1"></span>
         <span class="arrow arrow-2"></span>
     </div>
-    <p class="scroll-text">اسحب للأعلى</p>
+    <p class="scroll-text">اسحب للاسفل</p>
 </div>
 
 <!-- 
@@ -188,19 +188,6 @@
         text-shadow: 0px 0px 5px rgba(0, 195, 255, 0.5); /* وهج بسيط مطابق لتصميم الموقع */
     }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </header>
 
     <!-- Interactive Calculator Section -->
@@ -218,10 +205,11 @@
                     <div>
                         <label class="block font-bold mb-2 text-slate-700 text-sm">1. اختر نوع العرض / المنتَج:</label>
                         <select id="productType" onchange="calculatePrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 focus:outline-none focus:ring-2 focus:ring-sky-500 font-bold text-slate-800 text-sm transition">
-                            <option value="4R">طباعة صور قياس 4R (10x15 سم)</option>
-                            <option value="A5">طباعة صور قياس A5 (15x21 سم)</option>
-                            <option value="wood_A5">عرض بورد خشبي + صورة A5 (2,500 د.ع للقطعة)</option>
-                            <option value="wood_A4">عرض بورد خشبي + صورة A4 (4,500 د.ع للقطعة)</option>
+                            <option value="4R">حجم القياسي صغير A6 (10x15 سم)</option>
+                            <option value="A5">حجم متوسط  A5 (15x21 سم)</option>
+                            <option value="A4">حجم كبير A4 (21x30 سم)</option>
+                            <option value="wood_A5">بورد خشبي متوسط A5</option>
+                            <option value="wood_A4">بورد خشبي كبير A4</option>
                             <option value="album_12">ألبوم سلكي 12 صفحة A4 (حتى 60 صورة) (12,000 د.ع للدفتر)</option>
                         </select>
                     </div>
@@ -276,7 +264,7 @@
                         <h3 class="text-xl font-extrabold text-slate-800">لوحة بورد خشبي A5</h3>
                         <p class="text-slate-500 text-xs mt-1">صورة A5 مطبوعة ومثبتة على بورد خشب متين</p>
                         <div class="my-6">
-                            <span class="text-3xl font-black text-sky-600">2,500</span>
+                            <span class="text-3xl font-black text-sky-600">3,000</span>
                             <span class="text-xs font-bold text-slate-500">د.ع / للقطعة</span>
                         </div>
                         <ul class="text-xs space-y-2.5 text-slate-600 mb-6 font-semibold">
@@ -321,7 +309,7 @@
                         <h3 class="text-xl font-extrabold text-slate-800">لوحة بورد خشبي A4</h3>
                         <p class="text-slate-500 text-xs mt-1">صورة A4 مطبوعة مثبتة على بورد خشب للتعليق</p>
                         <div class="my-6">
-                            <span class="text-3xl font-black text-sky-600">4,500</span>
+                            <span class="text-3xl font-black text-sky-600">5,000</span>
                             <span class="text-xs font-bold text-slate-500">د.ع / للقطعة</span>
                         </div>
                         <ul class="text-xs space-y-2.5 text-slate-600 mb-6 font-semibold">
@@ -347,7 +335,7 @@
   <div class="offer-card">
     <div class="offer-image-container">
       <span class="offer-badge">عرض خاص 🔥</span>
-      <img src="images.jpg" alt="عرض طباعة الصور" class="offer-image">
+      <img src="/images.jpg" alt="عرض طباعة الصور" class="offer-image">
     </div>
     <div class="offer-content">
       <h3 class="offer-title">باكج الذكريات الملموسة</h3>
@@ -362,7 +350,7 @@
   <div class="offer-card">
     <div class="offer-image-container">
       <span class="offer-badge">عرض جديد ✨</span>
-      <img src="Wood-Block-prints-image-4.jpg" alt="عرض طباعة الصور" class="offer-image">
+      <img src="/Wood-Block-prints-image-4.jpg" alt="عرض طباعة الصور" class="offer-image">
     </div>
     <div class="offer-content">
       <h3 class="offer-title">اطبع صورك على بورد خشبي</h3>
@@ -511,11 +499,11 @@
 
             if (product === 'wood_A5') {
                 countLabel.innerText = "2. أدخل عدد قطع البورد (A5):";
-                subtotal = count * 2500;
-                detailText = `${count} قطعة بورد خشبي A5 (بسعر 2,500 د.ع للقطعة)`;
+                subtotal = count * 3000;
+                detailText = `${count} قطعة بورد خشبي A5 (بسعر 3,000 د.ع للقطعة)`;
             } else if (product === 'wood_A4') {
                 countLabel.innerText = "2. أدخل عدد قطع البورد (A4):";
-                subtotal = count * 4500;
+                subtotal = count * 5000;
                 detailText = `${count} قطعة بورد خشبي A4 (بسعر 4,500 د.ع للقطعة)`;
             } else if (product === 'album_12') {
                 countLabel.innerText = "2. أدخل عدد الألبومات السلكية:";
@@ -524,19 +512,19 @@
             } else {
                 countLabel.innerText = "2. أدخل عدد الصور المطلوبة:";
                 let unitPrice = 0;
-                if (product === '4R') {
-                    if (count <= 20) unitPrice = 250;
-                    else if (count <= 50) unitPrice = 200;
-                    else unitPrice = 180;
-                } else if (product === 'A5') {
-                    if (count <= 15) unitPrice = 466;
-                    else if (count <= 35) unitPrice = 400;
-                    else unitPrice = 320;
-                } else if (product === 'A4') {
-                    if (count <= 5) unitPrice = 1200;
-                    else if (count <= 15) unitPrice = 1000;
-                    else unitPrice = 650;
-                }
+if (product === '4R') {
+    if (count <= 20) unitPrice = 250;
+    else if (count <= 50) unitPrice = 200;
+    else unitPrice = 180;
+} else if (product === 'A5') {
+    if (count <= 15) unitPrice = 500;
+    else if (count <= 35) unitPrice = 400;
+    else unitPrice = 300;
+} else if (product === 'A4') {
+    if (count <= 5) unitPrice = 1000;
+    else if (count <= 15) unitPrice = 850;
+    else unitPrice = 650;
+}
                 subtotal = count * unitPrice;
                 detailText = `طباعة ${count} صورة قياس ${product}`;
             }
